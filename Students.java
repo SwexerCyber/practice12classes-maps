@@ -29,4 +29,18 @@ public class Students {
     public String toString() {
         return name + " " + surname;
     }
+
+    @Override
+    public int hashCode() {
+        int res = 19;
+        res = 31 * res + name.hashCode();
+        res = 31 * res + surname.hashCode();
+        return res;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        Students st = (Students) obj;
+        return name.equals(st.name) && surname.equals(st.surname);
+    }
 }
