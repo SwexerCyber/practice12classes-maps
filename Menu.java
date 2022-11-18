@@ -2,15 +2,18 @@ package com.company;
 import java.util.*;
 
 public class Menu {
-    //создать акк, репозиторий и добавить проект туда и дописать по нормальному
     static Map<Students, Groups> studentsGroupsMap = new HashMap<Students, Groups>();
-    static List<Groups> groupsList = new ArrayList<Groups>(){{
-        Groups group1;
-        add(1, group1)); add(2, group1); add(3, "PO23");}};
+    static List<Groups> groupsList = new ArrayList<Groups>();
 
     public static void menu(){
+        groupsList.add(new Groups("PO21"));
+        groupsList.add(new Groups("PO22"));
+        groupsList.add(new Groups("PO23"));
+
         int flag = 1;
         Scanner scanner = new Scanner(System.in);
+        Students student = null;
+        Students student1;
         while(flag == 1) {
             System.out.println("1. Добавить студента");
             System.out.println("2. Добавить группу");
@@ -19,7 +22,6 @@ public class Menu {
             System.out.println("5. Удалить группу");
             System.out.println("6. Вывод всех студентов");
             System.out.println("7. Выход");
-            // Поместить в 6 пункт вывод словаря из мейна и 7 сделать выход
             System.out.println("Выберите пункт меню:");
 
             int x = 0;
@@ -38,7 +40,7 @@ public class Menu {
                     String name = scanner.nextLine();
                     System.out.println("Введите фамилию студент");
                     String surname = scanner.nextLine();
-                    Students student = new Students(name, surname);
+                    student = new Students(name, surname);
 
                     System.out.println("Выберите номер группы из существующих");
                     for (int i = 0; i < groupsList.size(); i++) {
@@ -59,11 +61,19 @@ public class Menu {
                     break;
 
                 case 3:
-                    System.out.println("3. Изменить студента");
+                    System.out.println("Введите имя и фамилию");
+                    scanner.nextLine();
+                    name = scanner.nextLine();
+                    surname = scanner.nextLine();
+                    student1 = new Students(name, surname);
+                    Groups groupDel = studentsGroupsMap.remove(student1);
+                    // System.out.println(student.hashCode() + " " + student1.hashCode() + " " + student.equals(student1));
+                    System.out.println(groupDel);
+                    // добавить новую запись студента с
                     break;
 
                 case 4:
-                    System.out.println("4. Удалить студента");
+                    // закомитить код в гидхабе хихихиха
                     break;
 
                 case 5:
